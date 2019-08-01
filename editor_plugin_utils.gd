@@ -23,8 +23,11 @@ func set_editor_plugin(p_plugin):
 	godot_editor = plugin.get_editor_interface().get_base_control()
 
 #==============================================================================
-# Godot editor icons
+# Godot Theme
 #==============================================================================
+# Note: use the following methods if the theme is overridden per control or 
+#       operating within an editor plugin itself. Use control's respective 
+#       methods regarding theme where possible.
 
 # Fetches existing icon texture from Godot's own theme
 func get_editor_icon(p_name):
