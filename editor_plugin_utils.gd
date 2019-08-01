@@ -2,8 +2,11 @@
 # Distributed under the terms of the MIT license.
 #
 # Upstream repo: https://github.com/Xrayez/godot-editor-plugin-tools
-
-class_name EditorPluginUtils
+#
+# Usage: var utils = preload('editor_plugin_utils.gd').new(self) # EditorPlugin
+#
+# Uncomment to be available globally:
+# class_name EditorPluginUtils
 
 var plugin = null setget set_editor_plugin
 var godot_editor = null
