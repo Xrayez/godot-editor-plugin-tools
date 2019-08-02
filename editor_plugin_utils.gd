@@ -1,4 +1,4 @@
-# Copyright © 2019 Andrii Doroshenko and contributors
+# Copyright Â© 2019 Andrii Doroshenko and contributors
 # Distributed under the terms of the MIT license.
 #
 # Upstream repo: https://github.com/Xrayez/godot-editor-plugin-tools
@@ -29,8 +29,8 @@ func set_editor_plugin(p_plugin):
 #==============================================================================
 # Editor Icons
 #==============================================================================
-# Note: use the following methods if the theme is overridden per control or 
-#       operating within an editor plugin itself. Use control's respective 
+# Note: use the following methods if the theme is overridden per control or
+#       operating within an editor plugin itself. Use control's respective
 #       methods regarding theme where possible.
 
 # Fetches existing icon texture from Godot's own theme
