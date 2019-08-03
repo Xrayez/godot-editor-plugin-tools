@@ -119,3 +119,50 @@ func _name_filter_match(p_name, p_include):
 			break
 
 	return matched
+
+#==============================================================================
+# Editor Scene
+#==============================================================================
+
+# WIP: makes instanced scene node's children editable (aka "Editable Children")
+func make_editable(p_node):
+
+	var root = plugin.get_editor_interface().get_edited_scene_root()
+	if not root:
+		return
+
+	var root_path = root.filename
+	if root_path.empty():
+		return
+
+	var root_scene = load(root_path)
+	var state = root_scene._bundled
+	# This should make [editable path="node"] appear in text scene once saved
+	state.editable_instances.push_back(root.get_path_to(p_node))
+	root_scene._bundled = state
+
+#	Current hack:
+#	get_editor_interface().save_scene()
+#	or:
+#	ResourceSaver.save(root_scene.resource_path, root_scene)
+#	get_editor_interface().open_scene_from_path(root_scene.resource_path)
+
+
+# Makes instanced scene local (aka "Make Local")
+# Note: you should set p_node to be owned by root beforehand
+func make_local(p_node, p_recursive = true):
+
+	var root = plugin.get_editor_interface().get_edited_scene_root()
+	if not root:
+		return
+	# If instanced from scene, node should have non-empty filename,
+	# so clear it by the same logic to make it local
+	p_node.filename = ""
+
+	# Original owner is lost, restore children to root
+	for idx in p_node.get_child_count():
+		var child = p_node.get_child(idx)
+		if p_recursive:
+			child.propagate_call('set_owner', [root])
+		else:
+			child.owner = root
