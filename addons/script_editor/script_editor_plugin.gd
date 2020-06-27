@@ -20,9 +20,7 @@ var clear_doc_list_on_exit = true
 
 
 func _notification(what):
-	# NOTE: overriding the config on NOTIFICATION_WM_QUIT_REQUEST doesn't work,
-	# but might provide some future-proofing.
-	if what == NOTIFICATION_EXIT_TREE or what == NOTIFICATION_WM_QUIT_REQUEST:
+	if what == NOTIFICATION_EXIT_TREE:
 		clear_opened_list_from_config()
 
 
